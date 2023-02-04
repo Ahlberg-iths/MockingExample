@@ -21,4 +21,14 @@ class GameTest {
 
         assertEquals(9, game.score());
     }
+    
+    @Test
+    void scoreShouldReturn5WhenFirstRollIs2PinsAndSecondIs3() {
+        var game = new Game();
+
+        game.roll(2);
+        game.roll(3);
+
+        assertEquals(5, game.score());
+    }
 }
