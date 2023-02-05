@@ -3,6 +3,7 @@ package com.assignment2;
 public class Game {
     int score = 0;
     int bonusRounds = 0;
+    boolean doubleBonus = false;
     int bonusPoints = 0;
     boolean firstRollInFrame = true;
     int firstRoll = 0;
@@ -10,6 +11,7 @@ public class Game {
     void roll (int pins) {
         if (pins < 0 || pins > 10) handleMachineError();
         if (bonusRounds > 0) bonusPoints+= pins;
+        if (doubleBonus) bonusPoints+= pins;
 
         if (firstRollInFrame) handleFirstThrow(pins);
         else handleSecondThrow(pins);
@@ -25,6 +27,7 @@ public class Game {
             firstRoll = pins;
             firstRollInFrame = false;
         }
+        else if (bonusRounds > 0) doubleBonus = true;
         else bonusRounds = 2;
     }
 

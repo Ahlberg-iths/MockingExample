@@ -76,4 +76,15 @@ class GameTest {
 
         assertEquals(24, game.score());
     }
+    
+    @Test
+    void gameStartingWithThreeConsecutiveStrikesShouldReturnAScoreOf60() {
+        game.roll(10);
+        game.roll(10);
+        game.roll(10);
+
+        assertEquals(60, game.score());
+    }
+
+
 }
