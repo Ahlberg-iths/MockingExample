@@ -51,4 +51,13 @@ class GameTest {
     void rollWithMoreThan10PinsShouldThrowBowlingMachineErrorException(int value) {
         assertThrows(BowlingMachineErrorException.class, () -> game.roll(value));
     }
+    
+    @Test
+    void gameStartingWithRollsWithPins9And1And5ShouldReturn20() {
+        game.roll(9);
+        game.roll(1);
+        game.roll(5);
+
+        assertEquals(20, game.score());
+    }
 }
