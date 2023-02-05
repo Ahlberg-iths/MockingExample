@@ -60,4 +60,11 @@ class GameTest {
 
         assertEquals(20, game.score());
     }
+
+    @Test
+    void moreThan10PinsInTotalForAFrameShouldThrowBowlingMachineErrorException() {
+        game.roll(5);
+
+        assertThrows(BowlingMachineErrorException.class, () -> game.roll(6));
+    }
 }
