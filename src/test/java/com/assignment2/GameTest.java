@@ -67,4 +67,13 @@ class GameTest {
 
         assertThrows(BowlingMachineErrorException.class, () -> game.roll(6));
     }
+    
+    @Test
+    void gameStartingWithStrikeAnd4And3ShouldReturnAScoreOf24() {
+        game.roll(10);
+        game.roll(4);
+        game.roll(3);
+
+        assertEquals(24, game.score());
+    }
 }

@@ -21,8 +21,11 @@ public class Game {
     }
 
     private void handleFirstThrow(int pins) {
-        firstRoll = pins;
-        firstRollInFrame = false;
+        if (pins != 10) {
+            firstRoll = pins;
+            firstRollInFrame = false;
+        }
+        else bonusRounds = 2;
     }
 
     private void handleSecondThrow(int pins) {
