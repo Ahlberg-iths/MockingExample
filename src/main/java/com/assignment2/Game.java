@@ -4,7 +4,7 @@ public class Game {
     int score = 0;
 
     void roll (int pins) {
-        if (pins < 0) throw new BowlingMachineErrorException();
+        if (pins < 0 || pins > 10) throw new BowlingMachineErrorException();
         score += pins;
     }
 
