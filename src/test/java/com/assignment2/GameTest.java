@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.List;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -95,6 +96,16 @@ class GameTest {
     @MethodSource("fullGameWithScore")
     void aCompleteGameShouldReturnTheCorrectScore(int expectedScore, List<Integer> allRollsOfCompleteGame) {
         allRollsOfCompleteGame.forEach(roll -> game.roll(roll));
+
+        assertEquals(expectedScore, game.score());
+    }
+
+    @ParameterizedTest
+    @MethodSource("fullGameWithScore")
+    void extraRollsAfterGameIsCompleteDoNotCount(int expectedScore, List<Integer> allRollsOfCompleteGame) {
+        allRollsOfCompleteGame.forEach(roll -> game.roll(roll));
+
+        IntStream.range(1,10).forEach(i -> game.roll(i));
 
         assertEquals(expectedScore, game.score());
     }
